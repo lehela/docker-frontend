@@ -1,0 +1,9 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t lehela/docker-frontend-dev -f Dockerfile.dev .
+
+script:
+  - docker container run lehela/docker-frontend-dev npm run test -- --coverage
